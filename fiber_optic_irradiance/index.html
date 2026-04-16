@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiber Optic Irradiance Model</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #8888aa;
+      margin-bottom: 1.5rem;
+    }
+    .chart-container {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      margin-bottom: 1.5rem;
+    }
+    canvas { display: block; }
+    .controls {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      max-width: 800px;
+      width: 100%;
+    }
+    .controls h2 {
+      grid-column: 1 / -1;
+      font-size: 1.1rem;
+      color: #aaaacc;
+      border-bottom: 1px solid #2a2a4a;
+      padding-bottom: 0.5rem;
+    }
+    .control-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    label { font-size: 0.85rem; color: #8888aa; }
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: #2a2a4a;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #4fc3f7;
+      cursor: pointer;
+    }
+    .value {
+      font-size: 0.9rem;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+    .legend {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+    .legend-swatch {
+      width: 24px;
+      height: 4px;
+      border-radius: 2px;
+    }
+    .legend-swatch.dashed {
+      background: repeating-linear-gradient(
+        90deg, var(--color) 0px, var(--color) 6px, transparent 6px, transparent 10px
+      );
+    }
+  </style>
+</head>
+<body>
+  <h1>Multimode Fiber Optic Irradiance Model</h1>
+  <p class="subtitle">Cross-sectional intensity distribution at a projection surface</p>
+
+  <div class="chart-container">
+    <canvas id="chart" width="800" height="450"></canvas>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background: #e74c3c;"></div>
+        Step-index multimode (top-hat)
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch dashed" style="--color: #4fc3f7;"></div>
+        Graded-index multimode (Gaussian-like)
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <h2>Fiber Parameters</h2>
+    <div class="control-group">
+      <label>Distance from fiber tip</label>
+      <input type="range" id="distance" min="1" max="20" step="0.5" value="5">
+      <span class="value" id="distance-val">5.0 cm</span>
+    </div>
+    <div class="control-group">
+      <label>Numerical Aperture (NA)</label>
+      <input type="range" id="na" min="0.05" max="0.50" step="0.01" value="0.22">
+      <span class="value" id="na-val">0.22</span>
+    </div>
+    <div class="control-group">
+      <label>Core Diameter</label>
+      <input type="range" id="core" min="10" max="200" step="5" value="62.5">
+      <span class="value" id="core-val">62.5 µm</span>
+    </div>
+    <div class="control-group">
+      <label>Power</label>
+      <input type="range" id="power" min="0.1" max="10" step="0.1" value="1.0">
+      <span class="value" id="power-val">1.0 mW</span>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("chart");
+    const ctx = canvas.getContext("2d");
+
+    const sliders = {
+      distance: document.getElementById("distance"),
+      na:       document.getElementById("na"),
+      core:     document.getElementById("core"),
+      power:    document.getElementById("power"),
+    };
+    const labels = {
+      distance: document.getElementById("distance-val"),
+      na:       document.getElementById("na-val"),
+      core:     document.getElementById("core-val"),
+      power:    document.getElementById("power-val"),
+    };
+
+    function getParams() {
+      return {
+        z:      parseFloat(sliders.distance.value) / 100,    // cm → m
+        na:     parseFloat(sliders.na.value),
+        coreR:  parseFloat(sliders.core.value) / 2e6,        // µm diameter → m radius
+        power:  parseFloat(sliders.power.value) / 1000,       // mW → W
+      };
+    }
+
+    function updateLabels() {
+      labels.distance.textContent = parseFloat(sliders.distance.value).toFixed(1) + " cm";
+      labels.na.textContent       = parseFloat(sliders.na.value).toFixed(2);
+      labels.core.textContent     = parseFloat(sliders.core.value).toFixed(1) + " µm";
+      labels.power.textContent    = parseFloat(sliders.power.value).toFixed(1) + " mW";
+    }
+
+    // ─── Physics ───
+
+    function stepIndexProfile(r, p) {
+      const thetaMax   = Math.asin(p.na);
+      const spotRadius = p.z * Math.tan(thetaMax) + p.coreR;
+      const area       = Math.PI * spotRadius * spotRadius;
+      const I_uniform  = p.power / area;
+      return Math.abs(r) <= spotRadius ? I_uniform : 0;
+    }
+
+    function gradedIndexProfile(r, p) {
+      const thetaMax = Math.asin(p.na);
+      const wz       = p.z * Math.tan(thetaMax) + p.coreR;
+      const I0       = 2 * p.power / (Math.PI * wz * wz);
+      return I0 * Math.exp(-2 * r * r / (wz * wz));
+    }
+
+    // ─── Drawing ───
+
+    function draw() {
+      const p   = getParams();
+      const W   = canvas.width;
+      const H   = canvas.height;
+      const pad = { top: 40, right: 30, bottom: 50, left: 70 };
+      const plotW = W - pad.left - pad.right;
+      const plotH = H - pad.top - pad.bottom;
+
+      // Determine x-range: ±30 mm or enough to show the full spot
+      const thetaMax   = Math.asin(p.na);
+      const spotRadius = p.z * Math.tan(thetaMax) + p.coreR;
+      const xMax       = Math.max(spotRadius * 1.8, 0.005);  // at least 5 mm
+      const xMin       = -xMax;
+
+      // Sample both profiles to find y-max
+      const N = 600;
+      const siVals = [], giVals = [], rVals = [];
+      let yMax = 0;
+      for (let i = 0; i < N; i++) {
+        const r = xMin + (xMax - xMin) * i / (N - 1);
+        rVals.push(r);
+        const si = stepIndexProfile(r, p);
+        const gi = gradedIndexProfile(r, p);
+        siVals.push(si);
+        giVals.push(gi);
+        yMax = Math.max(yMax, si, gi);
+      }
+      yMax *= 1.15; // headroom
+
+      // Coordinate transforms
+      const toX = (r) => pad.left + ((r - xMin) / (xMax - xMin)) * plotW;
+      const toY = (v) => pad.top + plotH - (v / yMax) * plotH;
+
+      // Clear
+      ctx.fillStyle = "#16213e";
+      ctx.fillRect(0, 0, W, H);
+
+      // Grid lines
+      ctx.strokeStyle = "#2a2a4a";
+      ctx.lineWidth = 1;
+      const yTicks = 6;
+      for (let i = 0; i <= yTicks; i++) {
+        const yv = (yMax / yTicks) * i;
+        const py = toY(yv);
+        ctx.beginPath(); ctx.moveTo(pad.left, py); ctx.lineTo(W - pad.right, py); ctx.stroke();
+      }
+      const xTicks = 8;
+      for (let i = 0; i <= xTicks; i++) {
+        const xv = xMin + (xMax - xMin) * i / xTicks;
+        const px = toX(xv);
+        ctx.beginPath(); ctx.moveTo(px, pad.top); ctx.lineTo(px, pad.top + plotH); ctx.stroke();
+      }
+
+      // Center axis
+      ctx.strokeStyle = "#555577";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      const cx = toX(0);
+      ctx.beginPath(); ctx.moveTo(cx, pad.top); ctx.lineTo(cx, pad.top + plotH); ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Step-index (solid red)
+      ctx.strokeStyle = "#e74c3c";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i < N; i++) {
+        const px = toX(rVals[i]);
+        const py = toY(siVals[i]);
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // Graded-index (dashed blue)
+      ctx.strokeStyle = "#4fc3f7";
+      ctx.lineWidth = 2.5;
+      ctx.setLineDash([8, 5]);
+      ctx.beginPath();
+      for (let i = 0; i < N; i++) {
+        const px = toX(rVals[i]);
+        const py = toY(giVals[i]);
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Axes
+      ctx.strokeStyle = "#666688";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, pad.top);
+      ctx.lineTo(pad.left, pad.top + plotH);
+      ctx.lineTo(W - pad.right, pad.top + plotH);
+      ctx.stroke();
+
+      // Tick labels
+      ctx.fillStyle = "#8888aa";
+      ctx.font = "12px sans-serif";
+      ctx.textAlign = "center";
+      for (let i = 0; i <= xTicks; i++) {
+        const xv = xMin + (xMax - xMin) * i / xTicks;
+        ctx.fillText((xv * 1000).toFixed(1), toX(xv), pad.top + plotH + 18);
+      }
+      ctx.textAlign = "right";
+      for (let i = 0; i <= yTicks; i++) {
+        const yv = (yMax / yTicks) * i;
+        ctx.fillText(yv.toFixed(2), pad.left - 8, toY(yv) + 4);
+      }
+
+      // Axis labels
+      ctx.fillStyle = "#ccccdd";
+      ctx.font = "13px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Distance from fiber axis (mm)", pad.left + plotW / 2, H - 6);
+      ctx.save();
+      ctx.translate(16, pad.top + plotH / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText("Irradiance (W/m²)", 0, 0);
+      ctx.restore();
+
+      // Spot radius annotation
+      ctx.fillStyle = "#e74c3c";
+      ctx.font = "11px sans-serif";
+      ctx.textAlign = "left";
+      const spotPx = toX(spotRadius);
+      const annY   = toY(stepIndexProfile(0, p)) - 12;
+      if (spotPx < W - pad.right - 60) {
+        ctx.fillText(`spot r = ${(spotRadius * 1000).toFixed(1)} mm`, spotPx + 6, annY);
+        ctx.beginPath();
+        ctx.moveTo(spotPx, toY(0));
+        ctx.lineTo(spotPx, annY + 4);
+        ctx.strokeStyle = "#e74c3c88";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+
+    // ─── Event wiring ───
+
+    Object.values(sliders).forEach(s => {
+      s.addEventListener("input", () => { updateLabels(); draw(); });
+    });
+
+    updateLabels();
+    draw();
+  </script>
+</body>
+</html>
