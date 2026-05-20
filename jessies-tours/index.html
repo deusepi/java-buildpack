@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jessie's Tours of Ireland — Journey Into the Otherworld</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="starfield"></div>
+
+<!-- Navigation -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    Jessie's Tours
+    <span>of Ireland</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tours.html">Tours</a></li>
+    <li><a href="sacred-sites.html">Sacred Sites</a></li>
+    <li><a href="about.html">About Jessie</a></li>
+    <li><a href="contact.html">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="mist-layer"></div>
+
+  <div class="hero-content">
+    <!-- Celtic triskelion sigil -->
+    <svg class="hero-sigil" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" stroke="#c9963a" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+      <circle cx="50" cy="50" r="38" stroke="#c9963a" stroke-width="0.4" opacity="0.3"/>
+      <!-- Triskelion arms -->
+      <g transform="translate(50,50)">
+        <path d="M0,0 C0,-18 14,-26 20,-14 C26,-2 14,14 0,10 C-14,6 -14,-10 0,-10 C14,-10 22,6 16,18 C10,30 -6,30 -16,18 C-22,6 -14,-10 0,-10" stroke="#c9963a" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      </g>
+      <!-- Corner ornaments -->
+      <text x="50" y="8" text-anchor="middle" fill="#c9963a" font-size="6" opacity="0.5" font-family="serif">✦</text>
+      <text x="50" y="98" text-anchor="middle" fill="#c9963a" font-size="6" opacity="0.5" font-family="serif">✦</text>
+    </svg>
+
+    <p class="hero-eyebrow">✦ &nbsp; Step Beyond the Veil &nbsp; ✦</p>
+
+    <h1>
+      Ireland's Hidden
+      <span class="accent">Otherworld</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Journey to ancient stone circles, fairy forts, and sacred wells with
+      a guide who knows the land's living memory. Where myth is not legend —
+      it is the present moment.
+    </p>
+
+    <div class="hero-cta">
+      <a href="tours.html" class="btn btn-primary">Explore the Tours</a>
+      <a href="sacred-sites.html" class="btn btn-ghost">Sacred Sites</a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Tours -->
+<section style="background: var(--deep-forest);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">✦ &nbsp; The Journeys &nbsp; ✦</span>
+      <h2>Curated Pilgrimages</h2>
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-glyph">᚛</span>
+        <span class="divider-line right"></span>
+      </div>
+      <p>Each tour is a ritual in itself — a conscious passage through landscapes
+         that have been sacred for five thousand years.</p>
+    </div>
+
+    <div class="tours-grid">
+
+      <a href="tours.html#ancient-west" class="tour-card" data-category="ancient">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #0d2b14, #1a0d2e, #0a1610);
+               display:flex; align-items:center; justify-content:center; font-size:4.5rem;
+               filter: drop-shadow(0 0 30px rgba(201,150,58,0.3));">🌿</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">Most Popular</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration">
+            <span>⏳</span> 7 Days
+          </div>
+          <h3>The Ancient West — Connemara & Burren</h3>
+          <p>Stone walls older than history. Limestone pavements cracked open
+             like manuscripts. The wind carries voices here if you know how to listen.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">
+              €1,890
+              <small>per person · small group</small>
+            </div>
+            <span class="tour-link">Discover →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="tours.html#mythic-north" class="tour-card" data-category="mythic">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #1a0d2e, #0d1520, #0a1218);
+               display:flex; align-items:center; justify-content:center; font-size:4.5rem;
+               filter: drop-shadow(0 0 30px rgba(92,61,122,0.4));">🌑</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">Solstice Edition</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration">
+            <span>⏳</span> 5 Days
+          </div>
+          <h3>Mythic North — Newgrange & the Boyne Valley</h3>
+          <p>The passage tomb at Newgrange was aligned to the winter solstice
+             sunrise five centuries before Stonehenge was raised. We walk these
+             thresholds as pilgrims.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">
+              €1,450
+              <small>per person · small group</small>
+            </div>
+            <span class="tour-link">Discover →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="tours.html#island-edge" class="tour-card" data-category="island">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #0a1a14, #152233, #0d1a1a);
+               display:flex; align-items:center; justify-content:center; font-size:4.5rem;
+               filter: drop-shadow(0 0 30px rgba(30,80,90,0.5));">🌊</div>
+          <div class="overlay"></div>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration">
+            <span>⏳</span> 4 Days
+          </div>
+          <h3>The Island Edge — Aran Islands Immersion</h3>
+          <p>On Inis Mór, ancient forts cling to cliff edges above an Atlantic
+             that is said to reach all the way to Tír na nÓg, the Land of
+             Eternal Youth.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">
+              €1,190
+              <small>per person · small group</small>
+            </div>
+            <span class="tour-link">Discover →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="tours.html" class="btn btn-ghost">View All Journeys</a>
+    </div>
+  </div>
+</section>
+
+<!-- Sacred Sites teaser -->
+<section class="sites-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">✦ &nbsp; Thin Places &nbsp; ✦</span>
+      <h2>Where the Veil is Thinnest</h2>
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-glyph">☽</span>
+        <span class="divider-line right"></span>
+      </div>
+      <p>The Celts called them <em>caol áit</em> — thin places — where the boundary
+         between worlds becomes permeable. Ireland holds more of these than
+         almost anywhere on earth.</p>
+    </div>
+
+    <div class="sites-list">
+      <div class="site-item">
+        <span class="site-icon">🗿</span>
+        <h3>Poulnabrone Dolmen</h3>
+        <p>A portal tomb standing in the Burren since 3800 BCE. The ancestors
+           who sleep beneath it were still remembered when the druids walked this land.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">⭕</span>
+        <h3>Drombeg Stone Circle</h3>
+        <p>Seventeen standing stones aligned to the winter solstice sunset.
+           The fulacht fiadh beside them was used for feasting — and perhaps
+           for something older.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">💧</span>
+        <h3>Holy Wells</h3>
+        <p>Ireland has over three thousand sacred wells. Each has its own
+           spirit, its own protocol, its own medicine. We visit those that
+           still hum with presence.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">🏔️</span>
+        <h3>Croagh Patrick</h3>
+        <p>The holy mountain of Ireland. Pilgrims have climbed this quartzite
+           peak for over five thousand years — long before the saint gave it
+           his name.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="sacred-sites.html" class="btn btn-ghost">Explore Sacred Sites</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Jessie teaser -->
+<section style="background: var(--void);">
+  <div class="section-inner">
+    <div class="about-split">
+      <div class="about-visual">
+        <div class="jessie-portrait">
+          <div class="portrait-bg">🌿</div>
+          <div class="portrait-frame"></div>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-number">18</span>
+            <span class="stat-label">Years Guiding</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">340+</span>
+            <span class="stat-label">Sites Visited</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Tours Offered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Max Group Size</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-eyebrow">✦ &nbsp; Your Guide &nbsp; ✦</span>
+        <h2>Jessie O'Brien</h2>
+        <div class="divider" style="justify-content: flex-start; margin-left: 0;">
+          <span class="divider-line" style="max-width:60px;"></span>
+          <span class="divider-glyph" style="font-size:0.9rem;">✦</span>
+        </div>
+        <p class="lead">Born in Clare, trained in folklore at UCD, drawn back
+           to the land by something older than either.</p>
+        <p>Jessie has spent two decades walking the margins of Ireland —
+           the bogs and cliff-edges, the overgrown ringforts and forgotten
+           holy wells — studying the living mythology of a landscape that
+           most tourists only photograph.</p>
+        <p>Her tours are not sightseeing. They are a practice: of attention,
+           of presence, of learning to read a land that is still telling
+           its stories to those who stop long enough to hear.</p>
+        <a href="about.html" class="btn btn-ghost" style="margin-top:1rem;">Meet Jessie</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">✦ &nbsp; Voices &nbsp; ✦</span>
+      <h2>From Those Who Returned</h2>
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-glyph">✦</span>
+        <span class="divider-line right"></span>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">
+          "I have travelled widely, but nothing prepared me for standing inside
+          Newgrange at dawn. Jessie had given us the context — the myth, the
+          archaeology, the living tradition — and suddenly the light was not
+          just light."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Miriam Ashford</div>
+            <div class="author-origin">Bristol, England</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">
+          "Jessie doesn't guide you through Ireland — she teaches you how to
+          be in Ireland. After seven days I felt I had been given a new set
+          of senses. I left altered."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">T</div>
+          <div>
+            <div class="author-name">Thomas Reinhard</div>
+            <div class="author-origin">Hamburg, Germany</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">
+          "I came for the scenery. I stayed for the stories. I came home with
+          something I can only describe as a relationship — with a place,
+          with the past, with myself."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Siobhán Murray</div>
+            <div class="author-origin">Boston, USA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<div class="cta-banner">
+  <span class="section-eyebrow" style="display:block; margin-bottom:1rem;">✦ &nbsp; Begin &nbsp; ✦</span>
+  <h2>The Land Is Waiting</h2>
+  <p>Tours depart spring through autumn. Small groups only — never more than six.
+     Enquire early; these fill quickly.</p>
+  <a href="contact.html" class="btn btn-primary">Begin Your Journey</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          Jessie's Tours
+          <span>of Ireland</span>
+        </a>
+        <p>Bespoke pilgrimages into Ireland's mythic and sacred landscape.
+           Small groups. Deep immersion. The otherworld is closer than you think.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Journeys</h4>
+        <ul>
+          <li><a href="tours.html">All Tours</a></li>
+          <li><a href="tours.html#ancient-west">The Ancient West</a></li>
+          <li><a href="tours.html#mythic-north">Mythic North</a></li>
+          <li><a href="tours.html#island-edge">The Island Edge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="sacred-sites.html">Sacred Sites</a></li>
+          <li><a href="about.html">About Jessie</a></li>
+          <li><a href="contact.html">Enquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The Land</h4>
+        <ul>
+          <li><a href="sacred-sites.html#newgrange">Newgrange</a></li>
+          <li><a href="sacred-sites.html#burren">The Burren</a></li>
+          <li><a href="sacred-sites.html#aran">Aran Islands</a></li>
+          <li><a href="sacred-sites.html#wells">Holy Wells</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Jessie's Tours of Ireland &nbsp;·&nbsp; Clare, Ireland</p>
+      <p style="font-style:italic; opacity:0.4;">
+        ᚛ᚔᚅᚔᚄᚂᚓᚒᚅᚓ᚜ &nbsp; walk in beauty
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

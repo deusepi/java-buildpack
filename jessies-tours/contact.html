@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquire — Jessie's Tours of Ireland</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="starfield"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    Jessie's Tours
+    <span>of Ireland</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tours.html">Tours</a></li>
+    <li><a href="sacred-sites.html">Sacred Sites</a></li>
+    <li><a href="about.html">About Jessie</a></li>
+    <li><a href="contact.html">Enquire</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero" style="min-height: 40vh;">
+  <div class="page-hero-bg"></div>
+  <span class="section-eyebrow" style="position:relative;z-index:1; margin-bottom:0.8rem;">✦ &nbsp; Open a Door &nbsp; ✦</span>
+  <h1>Begin the Conversation</h1>
+  <p>Every journey starts with a question. Jessie answers every enquiry personally.</p>
+</div>
+
+<section style="background: var(--deep-forest);">
+  <div class="section-inner">
+    <div class="contact-layout">
+
+      <div class="contact-info">
+        <h2>Write to Jessie</h2>
+        <p>I respond to every enquiry personally, usually within two to three days.
+           Tell me what you're drawn to — a particular site, a particular season,
+           a particular question — and we will find the right journey together.</p>
+
+        <div class="contact-detail">
+          <span class="contact-detail-icon">✉️</span>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span>jessie@jessiestoursireland.ie</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail-icon">📍</span>
+          <div class="contact-detail-text">
+            <strong>Base</strong>
+            <span>Ennis, County Clare, Ireland</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail-icon">🗓️</span>
+          <div class="contact-detail-text">
+            <strong>Season</strong>
+            <span>April through October · solstice specials in December</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail-icon">👥</span>
+          <div class="contact-detail-text">
+            <strong>Group Size</strong>
+            <span>2 to 6 people · private tours any size</span>
+          </div>
+        </div>
+
+        <!-- Decorative ogham panel -->
+        <div style="margin-top: 3rem; padding: 2rem; border: 1px solid rgba(201,150,58,0.12);
+             background: rgba(4,8,12,0.4); border-radius:3px; text-align:center; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; bottom:0; width:3px;
+               background: linear-gradient(180deg, var(--gold), transparent);"></div>
+          <div style="font-family:'Cinzel Decorative',serif; font-size:1.3rem; color:var(--gold);
+               opacity:0.6; letter-spacing:0.3em; margin-bottom:0.8rem;">᚛ᚑᚉᚒᚋ᚜</div>
+          <p style="font-style:italic; color:var(--stone); font-size:0.88rem; line-height:1.7;">
+            "The ogham inscription above is an ancient Irish formula of greeting:
+            a welcome to the threshold. It has been carved on standing stones
+            across Ireland for fifteen hundred years."
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <span class="section-eyebrow" style="margin-bottom:1.5rem; display:block;">✦ &nbsp; Your Enquiry &nbsp; ✦</span>
+
+        <form id="enquiry-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Family Name</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Your family name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="where to reach you" required>
+          </div>
+
+          <div class="form-group">
+            <label for="origin">Where Are You Travelling From?</label>
+            <input type="text" id="origin" name="origin" placeholder="Country / city">
+          </div>
+
+          <div class="form-group">
+            <label for="tour">Tour of Interest</label>
+            <select id="tour" name="tour">
+              <option value="" disabled selected>Select a journey...</option>
+              <option value="ancient-west">The Ancient West — 7 Days</option>
+              <option value="mythic-north">Mythic North — 5 Days</option>
+              <option value="island-edge">The Island Edge — 4 Days</option>
+              <option value="kerry-deep">Kerry Deep Memory — 6 Days</option>
+              <option value="druids-path">The Druid's Path — 8 Days</option>
+              <option value="private">Private Pilgrimage — Bespoke</option>
+              <option value="unsure">Not sure yet — I'd like to talk</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="group-size">Group Size</label>
+              <select id="group-size" name="group-size">
+                <option value="" disabled selected>How many?</option>
+                <option value="1">Travelling alone</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+                <option value="more">Larger group</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="season">Preferred Season</label>
+              <select id="season" name="season">
+                <option value="" disabled selected>When?</option>
+                <option value="spring">Spring (Apr–May)</option>
+                <option value="summer">Summer (Jun–Aug)</option>
+                <option value="autumn">Autumn (Sep–Oct)</option>
+                <option value="solstice">Winter Solstice (Dec)</option>
+                <option value="flexible">I'm flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Me What Calls You</label>
+            <textarea id="message" name="message" rows="5"
+              placeholder="What draws you to Ireland? Is there a particular site, a family connection, a myth you've encountered, something you're looking for? The more you tell me, the better I can shape the journey for you."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem;">
+            Send Enquiry
+          </button>
+
+          <p style="font-size:0.8rem; color:var(--stone); text-align:center; margin-top:1rem; font-style:italic;">
+            Jessie responds personally to every enquiry, usually within 2–3 days.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background: var(--void);">
+  <div class="section-inner" style="max-width: 780px;">
+    <div class="section-header">
+      <span class="section-eyebrow">✦ &nbsp; Common Questions &nbsp; ✦</span>
+      <h2>Before You Write</h2>
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-glyph">✦</span>
+        <span class="divider-line right"></span>
+      </div>
+    </div>
+
+    <div style="display:grid; gap:1.5rem;">
+
+      <details style="background:rgba(13,31,18,0.5); border:1px solid rgba(201,150,58,0.15);
+               border-radius:3px; padding:1.5rem; cursor:pointer;">
+        <summary style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.05em;
+                 color:var(--gold-light); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          What level of fitness do the tours require?
+          <span style="color:var(--gold); font-size:1.2rem;">+</span>
+        </summary>
+        <p style="color:var(--mist); font-size:0.95rem; line-height:1.8; margin-top:1rem;">
+          Most tours involve walking on uneven ground — boreens, clifftops, boggy terrain.
+          You don't need to be an athlete, but you should be comfortable walking for two
+          to four hours with breaks. The Skellig Michael visit requires climbing 600 steps.
+          Let me know your physical considerations and I will plan accordingly.
+        </p>
+      </details>
+
+      <details style="background:rgba(13,31,18,0.5); border:1px solid rgba(201,150,58,0.15);
+               border-radius:3px; padding:1.5rem; cursor:pointer;">
+        <summary style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.05em;
+                 color:var(--gold-light); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Do I need prior knowledge of Irish history or mythology?
+          <span style="color:var(--gold); font-size:1.2rem;">+</span>
+        </summary>
+        <p style="color:var(--mist); font-size:0.95rem; line-height:1.8; margin-top:1rem;">
+          Not at all. Many people arrive with no background and leave with a relationship
+          to the material that surprises them. When you book, I send a reading list —
+          three or four short books and some poems — that primes the journey. Reading
+          is optional but recommended.
+        </p>
+      </details>
+
+      <details style="background:rgba(13,31,18,0.5); border:1px solid rgba(201,150,58,0.15);
+               border-radius:3px; padding:1.5rem; cursor:pointer;">
+        <summary style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.05em;
+                 color:var(--gold-light); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Can you help with Irish ancestry research?
+          <span style="color:var(--gold); font-size:1.2rem;">+</span>
+        </summary>
+        <p style="color:var(--mist); font-size:0.95rem; line-height:1.8; margin-top:1rem;">
+          Yes, and this is one of the things I most enjoy. If you have a family connection
+          to a particular county or townland, I can incorporate it into the journey —
+          locating old family land, visiting parish records, finding the place your
+          ancestors left. Tell me what you know and we will go looking together.
+        </p>
+      </details>
+
+      <details style="background:rgba(13,31,18,0.5); border:1px solid rgba(201,150,58,0.15);
+               border-radius:3px; padding:1.5rem; cursor:pointer;">
+        <summary style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.05em;
+                 color:var(--gold-light); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          How far in advance should I book?
+          <span style="color:var(--gold); font-size:1.2rem;">+</span>
+        </summary>
+        <p style="color:var(--mist); font-size:0.95rem; line-height:1.8; margin-top:1rem;">
+          Summer and solstice departures fill 6–9 months in advance. Spring and autumn
+          are sometimes available with 2–3 months notice. I keep a waiting list for
+          cancelled places. If you have a specific date in mind, write as soon as you can.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">Jessie's Tours <span>of Ireland</span></a>
+        <p>Bespoke pilgrimages into Ireland's mythic and sacred landscape.
+           Small groups. Deep immersion.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Journeys</h4>
+        <ul>
+          <li><a href="tours.html">All Tours</a></li>
+          <li><a href="sacred-sites.html">Sacred Sites</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Jessie's Story</a></li>
+          <li><a href="contact.html">Enquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:jessie@jessiestoursireland.ie">jessie@jessiestoursireland.ie</a></li>
+          <li><a href="#">Ennis, County Clare</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Jessie's Tours of Ireland &nbsp;·&nbsp; Clare, Ireland</p>
+      <p style="font-style:italic; opacity:0.4;">᚛ᚔᚅᚔᚄᚂᚓᚒᚅᚓ᚜ &nbsp; walk in beauty</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

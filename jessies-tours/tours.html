@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tours — Jessie's Tours of Ireland</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="starfield"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    Jessie's Tours
+    <span>of Ireland</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tours.html">Tours</a></li>
+    <li><a href="sacred-sites.html">Sacred Sites</a></li>
+    <li><a href="about.html">About Jessie</a></li>
+    <li><a href="contact.html">Enquire</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="orb orb-1" style="opacity:0.15;"></div>
+  <div class="orb orb-2" style="opacity:0.15;"></div>
+  <span class="section-eyebrow" style="position:relative;z-index:1; margin-bottom:0.8rem;">✦ &nbsp; The Pilgrimages &nbsp; ✦</span>
+  <h1>All Journeys</h1>
+  <p>Each departure is singular. The land is different every time you meet it.</p>
+</div>
+
+<section style="background: var(--deep-forest); padding-top: 3rem;">
+  <div class="section-inner">
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Tours</button>
+      <button class="filter-btn" data-filter="ancient">Ancient Sites</button>
+      <button class="filter-btn" data-filter="mythic">Mythic Ireland</button>
+      <button class="filter-btn" data-filter="island">Islands</button>
+      <button class="filter-btn" data-filter="private">Private</button>
+    </div>
+
+    <div class="tours-grid">
+
+      <!-- Tour 1 -->
+      <a href="#ancient-west" class="tour-card" id="ancient-west" data-category="ancient">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #0d2b14, #1a0d2e, #0a1610);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(201,150,58,0.3));">🌿</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">Most Popular</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 7 Days</div>
+          <h3>The Ancient West — Connemara & Burren</h3>
+          <p>Seven days moving slowly through Clare and Galway. Poulnabrone dolmen at
+             dawn. The Aran Islands. Kylemore Abbey. Turlough villages that flood and
+             drain with the seasons. A landscape that does not apologise for itself.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">€1,890 <small>per person · max 6</small></div>
+            <span class="tour-link">Details →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tour 2 -->
+      <a href="#mythic-north" class="tour-card" id="mythic-north" data-category="mythic">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #1a0d2e, #0d1520, #0a1218);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(92,61,122,0.4));">🌑</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">Solstice Edition</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 5 Days</div>
+          <h3>Mythic North — Newgrange & Boyne Valley</h3>
+          <p>The Brú na Bóinne complex is older than the Egyptian pyramids. Newgrange,
+             Knowth, and Dowth form a ritual landscape that was the centre of the
+             Irish cosmos. The winter solstice edition includes a dawn vigil.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">€1,450 <small>per person · max 6</small></div>
+            <span class="tour-link">Details →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tour 3 -->
+      <a href="#island-edge" class="tour-card" id="island-edge" data-category="island">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #0a1a14, #152233, #0d1a1a);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(30,80,90,0.5));">🌊</div>
+          <div class="overlay"></div>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 4 Days</div>
+          <h3>The Island Edge — Aran Islands</h3>
+          <p>Inis Mór, Inis Meáin, Inis Oírr. Three islands, three moods, three windows
+             onto a way of life — and a way of relating to rock, sea, and sky — that has
+             barely changed in a thousand years.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">€1,190 <small>per person · max 6</small></div>
+            <span class="tour-link">Details →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tour 4 -->
+      <a href="#kerry-deep" class="tour-card" id="kerry-deep" data-category="ancient">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #0f1f12, #1a2010, #0d180f);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(60,120,60,0.4));">⛰️</div>
+          <div class="overlay"></div>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 6 Days</div>
+          <h3>Kerry's Deep Memory — Skellig & Dingle</h3>
+          <p>Skellig Michael rises sheer from the Atlantic — a monastery clinging
+             to vertical rock. The Dingle Peninsula holds more ogham stones per mile
+             than anywhere in the world. This is Ireland's western edge in its
+             full strangeness.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">€1,750 <small>per person · max 6</small></div>
+            <span class="tour-link">Details →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tour 5 -->
+      <a href="#druids-path" class="tour-card" id="druids-path" data-category="mythic">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #200d30, #1a0d20, #0d0a20);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(120,60,180,0.4));">✨</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">New for 2025</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 8 Days</div>
+          <h3>The Druid's Path — From Tara to Uisneach</h3>
+          <p>The Hill of Tara was the sacred centre of ancient Ireland. Uisneach,
+             two days' walk west, was its cosmological twin — the navel of the
+             land. We walk the old road between them as the druids once did.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">€2,200 <small>per person · max 4</small></div>
+            <span class="tour-link">Details →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tour 6 -->
+      <a href="#private-bespoke" class="tour-card" id="private-bespoke" data-category="private">
+        <div class="tour-card-image">
+          <div class="image-bg" style="background: linear-gradient(160deg, #1a1408, #2a1e08, #0d0d08);
+               display:flex; align-items:center; justify-content:center; font-size:5rem;
+               filter: drop-shadow(0 0 30px rgba(201,150,58,0.4));">🗝️</div>
+          <div class="overlay"></div>
+          <span class="tour-badge">Bespoke</span>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-duration"><span>⏳</span> 3–14 Days</div>
+          <h3>Private Pilgrimage — Designed for You</h3>
+          <p>If your ancestry, your intention, or your curiosity points somewhere
+             specific — a particular county, a particular lineage, a particular
+             myth — Jessie will design the journey around you.</p>
+          <div class="tour-card-footer">
+            <div class="tour-price">P.O.A. <small>private · any size</small></div>
+            <span class="tour-link">Enquire →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- What's Included -->
+<section style="background: var(--void);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">✦ &nbsp; The Container &nbsp; ✦</span>
+      <h2>What Every Journey Holds</h2>
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-glyph">✦</span>
+        <span class="divider-line right"></span>
+      </div>
+    </div>
+
+    <div class="sites-list" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+      <div class="site-item">
+        <span class="site-icon">🏡</span>
+        <h3>Curated Lodging</h3>
+        <p>Small guesthouses and family-run B&Bs chosen for character, location,
+           and the quality of their breakfasts. Always close to the land.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">🚐</span>
+        <h3>Private Transport</h3>
+        <p>Comfortable private vehicle throughout. No coaches. No crowds.
+           We stop when something calls us to stop.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">📖</span>
+        <h3>Deep Context</h3>
+        <p>Evening conversations around mythology, archaeology, and living
+           tradition. A reading list prepared before you travel.</p>
+      </div>
+      <div class="site-item">
+        <span class="site-icon">🍽️</span>
+        <h3>Selected Meals</h3>
+        <p>Breakfasts daily. Selected dinners at restaurants where the food
+           is made with the same care we bring to the sites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <span class="section-eyebrow" style="display:block; margin-bottom:1rem;">✦ &nbsp; Ready? &nbsp; ✦</span>
+  <h2>Choose Your Threshold</h2>
+  <p>All tours depart from Dublin or Shannon. Dates available spring through
+     late autumn. Groups of 2 to 6.</p>
+  <a href="contact.html" class="btn btn-primary">Enquire About Dates</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">Jessie's Tours <span>of Ireland</span></a>
+        <p>Bespoke pilgrimages into Ireland's mythic and sacred landscape.
+           Small groups. Deep immersion.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Journeys</h4>
+        <ul>
+          <li><a href="tours.html">All Tours</a></li>
+          <li><a href="#ancient-west">The Ancient West</a></li>
+          <li><a href="#mythic-north">Mythic North</a></li>
+          <li><a href="#island-edge">The Island Edge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="sacred-sites.html">Sacred Sites</a></li>
+          <li><a href="about.html">About Jessie</a></li>
+          <li><a href="contact.html">Enquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Send Enquiry</a></li>
+          <li><a href="mailto:jessie@jessiestoursireland.ie">jessie@jessiestoursireland.ie</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Jessie's Tours of Ireland &nbsp;·&nbsp; Clare, Ireland</p>
+      <p style="font-style:italic; opacity:0.4;">᚛ᚔᚅᚔᚄᚂᚓᚒᚅᚓ᚜ &nbsp; walk in beauty</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

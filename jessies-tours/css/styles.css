@@ -1,0 +1,1203 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --void: #04080c;
+  --deep-forest: #0d1f12;
+  --forest: #152a1a;
+  --moss: #1e3d24;
+  --gold: #c9963a;
+  --gold-light: #e8b85a;
+  --gold-pale: #f5d98a;
+  --mist: #8ba88e;
+  --stone: #6b7c6e;
+  --parchment: #f0e8d0;
+  --cream: #faf5e8;
+  --rune: #4a7a52;
+  --otherworld: #1a0d2e;
+  --fae: #5c3d7a;
+  --glow: rgba(201, 150, 58, 0.15);
+  --glow-strong: rgba(201, 150, 58, 0.35);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--void);
+  color: var(--parchment);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── Celtic SVG border pattern ─────────────────────── */
+.knotwork-border {
+  border-image: none;
+  position: relative;
+}
+.knotwork-border::before,
+.knotwork-border::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+}
+
+/* ── Navigation ────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(4,8,12,0.95) 0%, rgba(4,8,12,0) 100%);
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid rgba(201, 150, 58, 0.15);
+  transition: background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(4, 8, 12, 0.97);
+  border-bottom-color: rgba(201, 150, 58, 0.3);
+}
+
+.nav-logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px var(--gold);
+}
+
+.nav-logo span {
+  color: var(--mist);
+  font-size: 0.75rem;
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mist);
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold-light);
+  text-shadow: 0 0 12px var(--gold);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* ── Hero ──────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30, 61, 36, 0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(26, 13, 46, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 60%, rgba(92, 61, 122, 0.2) 0%, transparent 60%),
+    linear-gradient(180deg, var(--void) 0%, var(--deep-forest) 40%, var(--otherworld) 100%);
+  z-index: 0;
+}
+
+/* Floating rune orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  animation: drift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-1 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #2a5c35, transparent);
+  top: 10%; left: 5%;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #5c3d7a, transparent);
+  top: 50%; right: 10%;
+  animation-delay: -6s;
+}
+.orb-3 {
+  width: 500px; height: 200px;
+  background: radial-gradient(circle, #c9963a26, transparent);
+  bottom: 20%; left: 30%;
+  animation-delay: -12s;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Particle mist */
+.mist-layer {
+  position: absolute;
+  inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-sigil {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  opacity: 0.8;
+  animation: spin-slow 30s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
+.hero h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cream);
+  text-shadow:
+    0 0 40px rgba(201, 150, 58, 0.4),
+    0 0 80px rgba(201, 150, 58, 0.1);
+  margin-bottom: 0.3em;
+}
+
+.hero h1 .accent {
+  color: var(--gold-light);
+  display: block;
+  font-size: 0.6em;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 30px var(--gold);
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--mist);
+  margin-bottom: 3rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+.btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--void);
+  border: none;
+  box-shadow: 0 4px 24px rgba(201, 150, 58, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 36px rgba(201, 150, 58, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid rgba(201, 150, 58, 0.5);
+}
+
+.btn-ghost:hover {
+  background: rgba(201, 150, 58, 0.08);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 20px rgba(201, 150, 58, 0.15);
+}
+
+/* ── Section styles ────────────────────────────────── */
+section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.section-header h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: var(--cream);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(201, 150, 58, 0.2);
+}
+
+.section-header p {
+  font-style: italic;
+  color: var(--mist);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.divider-line.right {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.divider-glyph {
+  color: var(--gold);
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* ── Tour Cards ────────────────────────────────────── */
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tour-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(21, 42, 26, 0.8), rgba(13, 31, 18, 0.9));
+  border: 1px solid rgba(201, 150, 58, 0.18);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.tour-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201, 150, 58, 0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.tour-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(201, 150, 58, 0.1);
+  border-color: rgba(201, 150, 58, 0.4);
+}
+
+.tour-card:hover::before {
+  opacity: 1;
+}
+
+.tour-card-image {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tour-card-image .image-bg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+
+.tour-card:hover .image-bg {
+  transform: scale(1.05);
+}
+
+.tour-card-image .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(13,31,18,0.9) 0%, rgba(13,31,18,0.3) 60%, transparent 100%);
+}
+
+.tour-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(4,8,12,0.8);
+  border: 1px solid rgba(201, 150, 58, 0.4);
+  color: var(--gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.tour-card-body {
+  padding: 1.8rem;
+  position: relative;
+  z-index: 2;
+}
+
+.tour-duration {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tour-card h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.tour-card p {
+  font-size: 0.95rem;
+  color: var(--stone);
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.tour-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(201, 150, 58, 0.12);
+  padding-top: 1.2rem;
+}
+
+.tour-price {
+  font-family: 'Cinzel', serif;
+  color: var(--gold-light);
+  font-size: 1rem;
+}
+
+.tour-price small {
+  font-size: 0.7rem;
+  color: var(--stone);
+  font-family: 'EB Garamond', serif;
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+.tour-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tour-card:hover .tour-link {
+  opacity: 1;
+}
+
+/* ── Sacred Sites section ──────────────────────────── */
+.sites-section {
+  background: linear-gradient(180deg, var(--deep-forest) 0%, var(--otherworld) 100%);
+}
+
+.sites-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.site-item {
+  padding: 2rem;
+  background: rgba(4,8,12,0.5);
+  border: 1px solid rgba(201, 150, 58, 0.12);
+  border-radius: 3px;
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.site-item:hover {
+  border-color: rgba(201, 150, 58, 0.3);
+  background: rgba(13, 31, 18, 0.5);
+}
+
+.site-item:hover::after {
+  opacity: 1;
+}
+
+.site-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(201, 150, 58, 0.4));
+}
+
+.site-item h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+
+.site-item p {
+  font-size: 0.9rem;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+/* ── Testimonials ──────────────────────────────────── */
+.testimonials-section {
+  background: var(--void);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial {
+  padding: 2.5rem;
+  background: linear-gradient(145deg, rgba(21,42,26,0.4), rgba(26,13,46,0.4));
+  border: 1px solid rgba(201, 150, 58, 0.1);
+  border-radius: 3px;
+  position: relative;
+}
+
+.testimonial::before {
+  content: '\201C';
+  position: absolute;
+  top: 1rem;
+  left: 1.8rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 4rem;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--mist);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss), var(--fae));
+  border: 1px solid rgba(201, 150, 58, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+.author-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: var(--parchment);
+  letter-spacing: 0.05em;
+}
+
+.author-origin {
+  font-size: 0.8rem;
+  color: var(--stone);
+}
+
+/* ── About section ─────────────────────────────────── */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-split { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.about-visual {
+  position: relative;
+}
+
+.jessie-portrait {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+  border-radius: 3px;
+  border: 1px solid rgba(201, 150, 58, 0.3);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.portrait-bg {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(30,61,36,0.6) 0%, transparent 70%),
+    radial-gradient(ellipse at 30% 80%, rgba(92,61,122,0.4) 0%, transparent 60%),
+    linear-gradient(160deg, var(--deep-forest), var(--otherworld));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  filter: drop-shadow(0 0 20px rgba(201,150,58,0.3));
+}
+
+.portrait-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 150, 58, 0.2);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.portrait-frame::before,
+.portrait-frame::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold);
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+.portrait-frame::before { top: -0.5rem; left: -0.5rem; }
+.portrait-frame::after  { bottom: -0.5rem; right: -0.5rem; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 1.2rem;
+  background: rgba(13,31,18,0.5);
+  border: 1px solid rgba(201,150,58,0.12);
+  border-radius: 3px;
+}
+
+.stat-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 20px rgba(201,150,58,0.4);
+}
+
+.stat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.about-text h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.about-text p {
+  color: var(--mist);
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-text p.lead {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--parchment);
+}
+
+/* ── CTA Banner ────────────────────────────────────── */
+.cta-banner {
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 100% at 50% 0%, rgba(30,61,36,0.5) 0%, transparent 70%),
+    var(--deep-forest);
+  border-top: 1px solid rgba(201, 150, 58, 0.15);
+  border-bottom: 1px solid rgba(201, 150, 58, 0.15);
+  padding: 5rem 2rem;
+}
+
+.cta-banner h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.cta-banner p {
+  font-style: italic;
+  color: var(--mist);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+footer {
+  background: var(--void);
+  border-top: 1px solid rgba(201, 150, 58, 0.1);
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-grid > *:first-child { grid-column: span 2; }
+}
+
+.footer-brand .nav-logo {
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--stone);
+  max-width: 260px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.footer-col h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col a {
+  font-size: 0.9rem;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--gold-light);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(201, 150, 58, 0.08);
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.8rem;
+  color: var(--stone);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ── Tours page specifics ──────────────────────────── */
+.page-hero {
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 50% 0%, rgba(30,61,36,0.5) 0%, transparent 70%),
+    linear-gradient(180deg, var(--deep-forest) 0%, var(--void) 100%);
+}
+
+.page-hero h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 40px rgba(201,150,58,0.3);
+  margin-bottom: 1rem;
+}
+
+.page-hero p {
+  font-style: italic;
+  color: var(--mist);
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  font-size: 1.1rem;
+}
+
+/* ── Filter tabs ───────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid rgba(201,150,58,0.25);
+  background: transparent;
+  color: var(--stone);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: rgba(201,150,58,0.1);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* ── Sacred Sites page specifics ───────────────────── */
+.site-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid rgba(201,150,58,0.1);
+}
+
+.site-detail:last-child {
+  border-bottom: none;
+}
+
+.site-detail.reverse {
+  direction: rtl;
+}
+.site-detail.reverse > * {
+  direction: ltr;
+}
+
+@media (max-width: 768px) {
+  .site-detail { grid-template-columns: 1fr; }
+  .site-detail.reverse { direction: ltr; }
+}
+
+.site-detail-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 3px;
+  border: 1px solid rgba(201,150,58,0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.site-detail-image .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  position: relative;
+}
+
+.site-detail-content h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.6rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.site-detail-content .location {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-detail-content p {
+  color: var(--mist);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.site-detail-content .lore {
+  font-style: italic;
+  color: var(--parchment);
+  padding: 1.2rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,150,58,0.05);
+  margin: 1.5rem 0;
+  font-size: 1rem;
+}
+
+/* ── Contact form ──────────────────────────────────── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+.contact-info h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.6rem;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+}
+
+.contact-info p {
+  color: var(--mist);
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-detail-icon {
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 6px rgba(201,150,58,0.4));
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contact-detail-text strong {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.contact-detail-text span {
+  color: var(--mist);
+  font-size: 0.95rem;
+}
+
+.contact-form {
+  background: rgba(13,31,18,0.5);
+  border: 1px solid rgba(201,150,58,0.15);
+  border-radius: 4px;
+  padding: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: rgba(4,8,12,0.6);
+  border: 1px solid rgba(201,150,58,0.2);
+  border-radius: 2px;
+  color: var(--parchment);
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--stone);
+  font-style: italic;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(201,150,58,0.5);
+  box-shadow: 0 0 0 3px rgba(201,150,58,0.08);
+}
+
+.form-group select option {
+  background: var(--deep-forest);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Ogham / rune decorative text ──────────────────── */
+.ogham {
+  font-family: 'EB Garamond', serif;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  letter-spacing: 0.3em;
+  color: rgba(201, 150, 58, 0.15);
+  font-size: 0.7rem;
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Stars / particle field ────────────────────────── */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: var(--gold-pale);
+  border-radius: 50%;
+  animation: twinkle var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: var(--max-opacity, 0.4); }
+}
+
+/* ── Responsive adjustments ────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
+  section { padding: 4rem 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
